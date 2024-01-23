@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Memo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 class="d-none">today's memo app</h1>
+    <header>
+        <div class="container mx-auto h-170 d-flex justify-center align-center text-center">
+            <h2>today's memo app</h2>
+        </div>
+    </header>
+    <main>
+        <article>
+            <!-- 등록 UI : 아까 잘라낸것을 붙여넣기 -->
+            <div class="container mx-auto">
+                <h2 class="mt-1 ml-1">오늘의 메모 추가하기</h2>
+                <form id="memo_form" autocomplete="off">
+                    <div class="container d-flex justify-center gap-1 m-1">
+                        <input type="text" id="user_memo">
+                        <button type="submit">+</button>
+                    </div>
+                </form>
+                
+                <h2 class="mt-1 ml-1">추가된 메모 갯수(<span id="count">0</span>)</h2>
+                <ul id="memo_list">
+                    <!-- 여기는 자바스크립트를 이용해 li 를 추가하는 방식 -->
+                </ul>
+            </div>
+        </article>
+        <article>
+            <!-- 출력 UI-->
+        </article>
+    </main>
+    <footer>
+        <!-- 저작권 정보-->
+        <p class="text-center">&copy; seon.</p>
+    </footer>
+    <script src="script/main.js"></script>
+</body>
+</html> 

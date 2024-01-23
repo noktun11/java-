@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;    
+}
+.mx-auto {
+    margin: 0 auto
+}
+.d-none {
+    display: none
+}
+.d-flex {
+    display: flex
+}
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center
+}
+.text-center {
+    text-align: center
+}
+/* ====================== 새로운 CSS ==================== */
+header {
+    background-image: url("../images/header-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+header h2 {
+    color: white;
+    border: 1px solid white;
+    padding: .5rem .750rem;
+    width: 61.11111111111111vw;    
+}
+.h-170 {
+    min-height: 170px;
+}
+
+
+#user_memo {
+    border-color: #67AFB4;
+    outline: 0; /* 포커스된 요소를 강조하는 아웃라인 : 없음 */
+    height: 30px;
+    flex: 4;
+    font-size: 1.250rem;
+    text-indent: 1rem
+}
+[type=submit] { /* 속성 선택자 */
+    width: 45px;
+    height: 30px;
+    border-radius: 30px;
+    color: white;
+    background-color: #67AFB4;
+    border: 0;
+    flex: 1
+}
+.mt-1 {
+    margin-top: 1rem
+}
+.ml-1 {
+    margin-left: 1rem
+}
+.gap-1 {
+    gap: 1rem
+}
+.m-1 {
+    margin: 1rem
+}
+
+#memo_list {
+    margin: 2rem;
+    list-style: disc inside; /* circle, square */    
+    border-top: 1px dotted #A1A1A1;
+    max-height: 500px;
+    overflow-y: scroll /* 높이를 넘치면 스크롤 생성 */
+}
+#memo_list li {
+    margin: 1rem 0
+}
+
+footer {
+    background-color: #534133;
+    color: white;
+    width: 100vw;
+    padding: .5rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} 
