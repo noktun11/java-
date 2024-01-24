@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자리배치도2</title>
+    <style>
+      table,
+      td {
+        border: 1px solid #333;
+        border-collapse: collapse;   
+      }
+      #tb1 {
+        width: 500px
+      }
+      #tb1 td {
+        padding: 2rem 0;
+        text-align: center
+      }
+      .odd {
+        background-color: lightgray
+      }
+      @media all and print {
+        h1, p, button {
+          display: none
+        }
+        #tb1 {
+          width: 90%;
+          margin: 0 auto
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자리 배치도 만들기 2 (p.503)</h1>
+    <p>
+      입장객 수(memNum)와 한 줄에 앉은 사람수(colNum)을 입력받아 줄 개수(rowNum)
+      결정하고, 반복문을 이용해 좌석 번호를 그리는 프로그램
+    </p>
+    <!-- 표 만들기 (p.88) 
+    표 : 행/열 이뤄진 데이터(문자열, 숫자) 표시하는 웹 요소 
+    // 입력 : prompt() 또는 FORM의 <input type="text">
+    // 입장객 수, 할줄에 앉은 사람 수, 줄 갯수 결정
+    // 반복문 처리
+    // table 태그로 좌석번호를 출력 (p.88)
+    -->
+    <script>
+      var memNum = prompt("입장객은 모두 몇명인가요?"); // 56명 (string | null)
+      var colNum = prompt("한 줄에 몇명씩 앉습니까?"); // 5 (열)
+      var rowNum = memNum / colNum; // 11.2 --> parsetInt(11) --> (행)
+
+      var num = 1; // number type
+      var t = "";
+      t += "<table id=\"tb1\">";
+      for(var j = 1; j <= parseInt(rowNum) + 1; j++){
+        t += "<tr>";
+        for(var i = 1; i <= parseInt(colNum); i++) {            
+            if (i % 2 == 0) {
+                t += "<td class=\"odd\">" + num + "</td>";
+            } else {
+                t += "<td>" + num + "</td>";
+            }
+            if(num == parseInt(memNum)) {
+              t += "<td>&nbsp;</td>";
+              break;
+            } else {
+              num++;
+            }
+            console.log(num);
+        }
+        t += "</tr>";
+    }
+      t += "</table>";
+      console.log(t);
+      document.write(t);
+    </script>
+    <button onclick="window.print()">프린트</button>
+  </body>
+</html> 
