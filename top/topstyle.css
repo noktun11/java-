@@ -23,6 +23,7 @@ html {
 	    - 부분 : float, position
 	    - display 변경해가면서 구현
  */
+
 *,
 *::before, /* 초기값 설정 */
 *::after {
@@ -40,6 +41,74 @@ a, a:link {
 	color: inherit; /* 색상: 물려받아서 결정 */
 	text-decoration: none
 }
+
+
+/* =================== 라이트박스 =================== */
+
+.row ul {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: repeat(2, 160px);
+    grid-template-columns: repeat(3, 200px);
+}
+#lightbox {
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,.3);
+    width: 100vw;
+    height: 100vh
+}
+#closer {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    right: 5%;
+    top: 5%;
+    border: 0;
+    background-color: rgba(255,255,255,.7);
+}
+#next {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background-color: white;
+}
+#prev {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background-color: white;
+}
+.box_wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* overflow: hidden; */
+    border: 5px solid white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.7);
+}
+.box_wrap img {
+    width: 100%;
+    object-fit: cover;
+}
+
+
 
 
 /* =================== 01. 레이아웃 공통 클래스 정의 =================== */
