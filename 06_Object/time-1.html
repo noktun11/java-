@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Date</h2>
+    <button id="showTime">표시</button>
+    <div id="clock">
+    </div>
+    <script>
+        //1.생성자 함수 : new Object()
+        //2.객체 리터럴 : {}
+        //P.555 Date 객체의 인스턴트 만들기
+        // 일반 함수 : date
+        //내장 함수 : Date  <---관례상, 생성자 함수
+        //1. 클릭할 대상 : 버튼 찾기
+        const show_bt = document.querySelector("#showTime");
+        //2. 버튼 찾으면, 날짜 객체 인스턴트화 ---> 정보를 get해와서,
+        showBt.addEventListener("click", displayTime);
+
+        //3. #clock 객체에 출력(=조작)
+        function displayTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            const $clock = document.querySelector("#clock");
+            // let timeString = `${hours} : ${mins} : ${seconds}`;
+            let time = hours + " : " + mins + " : " + seconds;
+            $clock.innerText = time;
+        }
+
+    </script>
+
+</body>
+
+</html>

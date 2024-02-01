@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>수학객체(math, p.571)</h1>
+    <script>
+        // 전체 응모자 수를 입력받고 prompt(),
+        // 랜덤으로 무작위 추첨을 하는 프로그램(p.574)
+
+        var seed = prompt("전체 응모자 수를 입력하세요");
+        var picked = Math.floor((Math.random() * seed) + 1);
+
+        document.write("전체 응모자 수: " + seed + "명");
+        document.write("<br>");
+        document.write("당첨자: " + picked + "번");
+
+        /*document.querySelector("#result").innerHTML = `
+        <p>전체 응모자수 : ${seed}</p>
+        <strong>${picked}</strong>번 축하합니다.
+        `;*/
+
+    </script>
+
+    
+</body>
+</html>

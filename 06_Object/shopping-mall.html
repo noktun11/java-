@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("DOMContentLoaded", function(){
+            // 1. 클릭할 작은 이미지들 선택
+            const smallDiv = document.querySelector("#small-pic");
+            const smallLi = smallDiv.querySelectorAll("li");
+            smallLi.forEach(function(li, index){
+                li.addEventListener("click", function(){
+                    let thisChildImgUrl = this.querySelector("img").getAttribute("src");
+                    displaySrc(thisChildImgUrl);
+                });
+            });
+            function displaySrc(url) {
+                const bigPic = document.querySelector("#cup");
+                let tempUrl = url.split("/");
+                // ['https:', '', 'picsum.photos', 'id', '10', '130']
+                let newUrl = tempUrl[0]+"//"+tempUrl[2]+"/"+tempUrl[3]+"/400/400";
+                console.log(newUrl);
+                bigPic.setAttribute("src", newUrl);
+            }
+        });
+    </script>
+[오전 10:15]
+<div class="shop-container d-flex justify-between">
+        <div>
+            <div id="big-pic">
+                <img src="https://picsum.photos/id/1/400/400" alt="에디오피아 게뎁" id="cup">
+            </div>
+            <ul id="small-pic" class="d-flex justify-between">
+                <li><img src="https://picsum.photos/id/10/130" alt="에디오피아 게뎁1"></li>
+                <li><img src="https://picsum.photos/id/100/130" alt="에디오피아 게뎁2"></li>
+                <li><img src="https://picsum.photos/id/1000/130" alt="에디오피아 게뎁3"></li>
+            </ul>
+        </div>
+        <div>
+            <img src="detail.png" alt="상품 상세정보">
+            <div>
+                <h2>수량선택</h2>
+                <div>
+                    <form autocomplete="off">
+                        <button type="button" id="minus">-</button>
+                        <input type="text" id="count" value="1">
+                        <button type="button" id="plus">+</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

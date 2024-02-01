@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜 계산 프로그램</title>
+    <style>
+        #result{
+            color: red;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Date 객체 사용법</h1>
+    <p>Date객체 실습</p>
+    <div class="="d-day>
+        <h2>책 읽기</h2>
+        <p><span id="result"></span>일 연속을 달성했군요!</p>
+        <p>축하 합니다.</p>        
+    </div>
+
+    <script>
+        var now = new Date("2024-01-27");
+        var firstDay = new Date("2024-01-01");
+
+        var toNow = now.getTime();
+        var toFirst = firstDay.getTime();
+
+        var passedTime = toNow - toFirst;
+        //console.log(passedTime);
+
+        //밀리 초 ---> 일 수로 환산
+        passedTime = Math.round(passedTime/(1000*60*60*24));
+
+        //DOM 탐색 메소드 ; querySelector(), querSelectorAll()
+        const passedDay = document.querySelector("#result");
+
+        //DOM 조작 프로퍼티
+        passedDay.innerText = passedTime;
+
+    </script>
+    
+</body>
+</html>

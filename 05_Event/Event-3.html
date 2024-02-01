@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "change">
+        <p id = "text_ext">"change" 버튼 클릭시 색상 바뀌는..</p>
+
+    </button>
+    <script>
+        //1.클릭할 버튼 찾기 : document.querySelector() vs dociment.getElementByid()
+        const changeBt = document.querySelector("change");
+        //2.버튼 클릭이벤트가 발생하면 처리할 함수 등록(이벤트 처리기)
+        //changeBt.onclick = changeColor;
+        changBt.addEventListner("click, changeColor");
+
+        function changeColor(){
+            //2-1. 색상을 바꿀 대상 찾기
+            const p_tag = document.querySelector("p");
+            p_tag.style.color = "#f00";
+            //document.querySelector("p").style.color = "#f00";
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

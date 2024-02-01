@@ -1,0 +1,19 @@
+@charset "utf=8";
+
+.d-none {
+    display: none
+}
+.d-flex {
+    display: flex
+}
+.column {
+    flex-direction: column
+}
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center;
+}
+
+/* 반응형 미디어쿼리 vs 부트 스트랩

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리만난지...</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 class="d-none">d-day counter | 디데이 계산기</h1>
+    <header>
+        <h2>우리만난지</h2>
+    </header>
+    <main>
+        <form autocomplete="off" id="my_form">
+            <div>
+                <img src="images/ring_with_diamond.png" alt="커플링">
+            </div>
+            <!-- 구글 광고를 붙일 예정..-->
+            <div>
+                <p>사귄 날짜를 입력하세요 (ex.20240101)</p>
+                <input type="text" id="first_date">
+            </div>
+            <div>
+                <p>이름을 입력하세요</p>
+                <input type="text" id="man_name">
+                <input type="text" id="woman_name">
+            </div>
+            <button>우리 만난지 며칠째?</button>
+        </form>
+    </main>
+    <div id="result" class="d-none">
+        <span id="name1"></span>♥<span id="name2"></span>
+        <p>우리 만난지 <span id="passedDay"></span>일 째</p>
+        <img src="images/man.png" alt="남성 프로필 이미지">
+        <img src="images/woman.png" alt="여성 프로필 이미지">
+        <p><span id="inputDay"></span>부터 사귀기 시작해서</p>
+        <p>300일 까지 <span id="special1"></span>일 남았어요!</p>
+        <p>1주년 까지 <span id="special2"></span>일 남았어요!</p>
+    </div>
+    <script src="script/main.js"></script>
+</body>
+</html>

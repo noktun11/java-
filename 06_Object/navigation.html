@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 배열메소드</title>
+    <style>
+        #popup {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #333;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: slateblue;
+        }
+        #close {
+            position: absolute;
+            right: 10%;
+            bottom: 5%
+        }
+    </style>
+</head>
+<body>
+    <h1>배열 메소드 forEach() 사용</h1>
+    <p>웹 UI의 내비게이션을 forEach를 이용해서 구현</p>
+    <div id="popup">
+        이것은 팝업
+        <button id="close">닫기</button>
+    </div>
+    <ul id="gnb">
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+    </ul>
+    <script>
+        // a를 클릭하면 무언가를 실행 : 이벤트, 이벤트 처리기(핸들러or리스너), 함수
+        // document.querySelector() : 첫번째 일치하는 DOM 요소를 반환
+        const closeBt = document.querySelector("#close"); // 찾고
+        closeBt.addEventListener("click", hidePopup); // 이벤트 등록하고
+        function hidePopup(){ // 이벤트 감지하면 처리할 일 정의
+            const popupDiv = document.querySelector("#popup");
+            popupDiv.style.display = "none";
+        }
+
+        // document.querySelectorAll() : 일치하는 모든 DOM 요소를 반환
+        const items = document.querySelectorAll("#gnb li a");
+        items.forEach(function(v, i) { // value
+            items[i].addEventListener("click", function(){                      
+                if(i == 0) {
+                    location.href = "
+https://www.naver.com/
+"
+                } else if (i == 1) {
+                    location.href = "
+https://www.daum.net/
+";
+                } else if (i == 2) {
+                    location.href = "
+https://www.youtube.com/
+";
+                } else if (i == 3) {
+                    alert("서비스를 이용하실 수 없습니다");
+                }
+            });
+        });
+        // items[0].addEventListener("click", function(){
+        //     console.log(this);
+        // });
+        // items[1].addEventListener("click", function(){
+        //     console.log(this);
+        // });
+        // items[2].addEventListener("click", function(){
+        //     console.log(this);
+        // });
+        // items[3].addEventListener("click", function(){
+        //     console.log(this);
+        // });
+    </script>
+</body>
+</html> 
