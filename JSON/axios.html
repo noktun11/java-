@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON : 데이터 교환</title>
+    <!-- axios API 메뉴얼 | https://axios-http.com/kr/docs/intro -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>axios API를 이용한 네트워크 통신</h1>
+    <p>
+      써드파티 기술로 과거 XMLHttpRequest 객체를 이용하거나 모던 브라우저에서는
+      fetch API를 사용하는데에 비해, 프런트엔드개발 환경에서는 axios를
+      최종적으로 사용함
+    </p>
+    <div id="result"></div>
+    <button id="req_bt">요청하기</button>
+    <button id="dom_print">결과출력</button>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => { // DOM 불러들인 뒤에 실행!
+          const reqBt = document.querySelector("#req_bt"); // 요청버튼을 찾고
+          const printBt = document.querySelector("#req_bt"); // 요청버튼을 찾고
+          const result = document.querySelector("#result"); // 결과div를 찾고
+          let albums = null;
+          reqBt.addEventListener("click", () => { // 요청버튼에 click 이벤트가 발생하는지 감시하다가, 발생되면! 실행~
+            albums = axios.get("https://jsonplaceholder.typicode.com/albums")
+              .then((response) => {
+                  console.log(response.data);
+                  for(const data of response.data) {
+                      console.log(data.userId, data.id, data.title);
+                  }
+                  return response.data;
+              })
+              .catch((error) => console.log(error))
+          });
+          // 버튼 눌러서 데이터를 서버에 get 요청하고, 응답받은 객체를 JSON으로 파싱해서, album에 담아라!
+          printBt.addEventListener("click", () => {
+              //userId, id, title
+              let ul = "<ul>"
+              for(const album of albums) {
+                  ul += 
+                      <li>${album.id} : ${album.title}</li>
+                  
+              };
+              ul += "</ul>";
+              result.innerHTML = ul;
+          })
+        });
+      </script>
+  </body>
+</html>
