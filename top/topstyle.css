@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@font-face { font-family: 'font'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') 
+    format('woff'); font-weight: normal; font-style: normal; }
 :root {
 	--base-font-color: #000;
 	--main-font-color: #f9c02d;
@@ -8,6 +11,7 @@
 }
 html {
 	font-size: 20px; /* 문서 전체 root 폰트 크기 */
+    /*text-align: center;*/
 }
 /* pc 버전의 스타일
 	
@@ -32,7 +36,6 @@ html {
 	box-sizing: border-box
 }
 
-
 body {
 	font-family: 'Maven Pro', 'Noto Sans KR', sans-serif;
 }
@@ -41,7 +44,6 @@ a, a:link {
 	color: inherit; /* 색상: 물려받아서 결정 */
 	text-decoration: none
 }
-
 
 /* =================== 라이트박스 =================== */
 
@@ -107,8 +109,44 @@ a, a:link {
     width: 100%;
     object-fit: cover;
 }
+/* =================== 팝업버튼 =================== */
+#popup {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #333;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: slateblue;
+}
+#close {
+    position: absolute;
+    right: 10%;
+    bottom: 5%
+}
 
 
+/* =================== 팝업창과 모달 =================== */
+#modal {
+    background-color: rgba(0, 0, 0, .5);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0; 
+    left: 0
+}
+.coupon {
+    width: 277px;
+    height: 366px;
+    position: relative
+}
+[type=image] {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 
 /* =================== 01. 레이아웃 공통 클래스 정의 =================== */
@@ -254,6 +292,38 @@ hr {
     width: 100%;
     height: 100%;
 } 
+
+/* ====================== 로그인 ==================== */
+h1 {
+    font-family: 'font', sans-serif;
+    font-size: 35px;
+}
+input {
+    width: 80%;
+    height: 30px;
+    border: 2px solid rgb(244, 8, 8);
+    padding-left: 10px;
+    background-color:lightgreen;
+}
+#user_id {
+    font-size: 20px;
+}
+#user_pw {
+    font-size: 20px;
+}
+#submit {
+    width: 200px;
+    height: 75px;
+    background-color: rgb(18, 11, 235);
+    color: rgb(229, 15, 15);
+    font-size: 30px;
+    font-family: 'font', sans-serif;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+#submit:hover {
+    background-color:rgb(243, 32, 12);
+}
 
 
 

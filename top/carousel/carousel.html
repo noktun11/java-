@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>캐러셀 이미지</h1>
+    <div class="carousel">
+        <div class="container">
+            <button id="prev">이전</button>
+            <div id="imgs">
+                <img src="images/item1.jpg" alt="img1">
+                <img src="images/item2.jpg" alt="img2">
+                <img src="images/item3.jpg" alt="img3">
+                <img src="images/item4.jpg" alt="img4">
+            </div>
+            <button id="next">다음</button>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .container {
+            width: 1000px;
+            height: 562px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+        #imgs {
+            width: 4000px;
+            height: 562px;
+            display: flex
+        }
+        #prev, #next {
+            position: absolute;
+            top: 50%;
+        }
+        #next { right: 5%}
+        #prev { left: 5%}
+    </style>
+        <style>
+        @font-face { font-family: 'font'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+        h1 {
+            font-family: 'font', sans-serif;
+            font-size: 25px;
+        }
+        html {
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            height: 50px;
+            border: 2px solid black;
+            padding-left: 10px;
+        }
+        #id_ {
+            font-size: 20px;
+        }
+        #pass_ {
+            font-size: 20px;
+        }
+        #submit {
+            width: 200px;
+            height: 75px;
+            background-color: green;
+            color: white;
+            font-size: 30px;
+            font-family: 'font', sans-serif;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+        #submit:hover {
+            background-color:lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var imgWidth = 1000;
+        var imgCount = $("#imgs img").length; // 갯수
+        var currentIndex = 0;
+        $(function(){
+            carouse();
+        });
+        function carousel(){
+            carouselNext();
+            carouselPrev();
+        }
+        function carouselPrev(){
+            $("#prev").on("click", prevImg);
+        }
+        function carouselNext(){
+            $("#next").on("click", nextImg);
+        }
+        function prevImg(){
+                var prevIndex = currentIndex - 1; // 다음 = 현재 + 1 vs 이전 = 현재 - 1 
+                if (prevIndex < 0) prevIndex = 3;
+                currentIndex = prevIndex;
+                var movePoint = -1 * imgWidth * prevIndex;
+                $("#imgs").stop().animate({
+                    marginLeft: movePoint
+                }, 400);
+            }
+            function nextImg(){
+                var nextIndex = currentIndex + 1; // 다음 = 현재 + 1 vs 이전 = 현재 - 1 
+                if (nextIndex >= imgCount) nextIndex = 0;
+                currentIndex = nextIndex;
+                var movePoint = -1 * imgWidth * nextIndex;
+                $("#imgs").stop().animate({
+                    marginLeft: movePoint
+                }, 400);
+            }
+    </script>
+    
+</body>
+</html>

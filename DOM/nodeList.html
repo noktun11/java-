@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 추가, 삭제하기</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h1>노드리스트란!(p.624)</h1>
+    <h2>Web Programming</h2>
+    <form autocomplete="off" id="todo_form">
+
+
+    </form>
+    <ul id = "itemList">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+    </ul>
+    <script>
+        const form = document.getElementById("todo_form");
+        const todoInput = document.getElementById("todo");
+        const lists = document.getElementById("itemList");
+        let count = 0;
+        form.addEventListener("submit", addTodo);
+
+        function addTodo(event){
+            event.preventDefault(); // 기본적인 기능-새로고침-중단 처리
+            if (todoInput.value.length <= 0) {
+                alert("할일을 입력하세요!");
+                todoInput.focus();
+            } else {
+                let newLi = document.createElement("li");
+                let txtNode = document.createTextNode(todoInput.value);
+                let classNode = document.createAttribute("class");
+                // 브라우저 내에 어딘가에 100~200MB가량 저장할수 있는 공간 ==> 검사도구 ==> 애플리케이션 ==> 저장소
+                let todosArray = [];
+                todosArray.push({
+                    id: count,
+                    text: todoInput.value
+                });
+                count++;
+                localStorage.setItem("todos",todosArray); // 로컬저장소에 데이터를 저장하기
+                console.log(localStorage.getItem("todos")); // 저장된 데이터를 불러와서 출력
+
+                classNode.value = "item";
+                newLi.setAttributeNode(classNode); // .setAttribute(속성명, 속성값);
+                newLi.appendChild(txtNode); // p에 DOM은~ 텍스트를 추가
+                lists.prepend(newLi);
+                todoInput.value = ""; // 다음 입력을 위해서, 비워둠
+                todoInput.focus(); // 다음 입력을 강조
+            }
+
+            }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON : 데이터 교환</title>
+    <style>
+        table, th, td {
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 1rem;
+        text-align: center
+        }
+    </style>
+  </head>
+  <body>
+    <h1>fetch() : HTTP 통신 표준 메소드</h1>
+    <p>
+      get, post, put, patch, delete를 과거 XMLHttpRequest 객체를 이용하다가,
+      최근에 이것을 대신하는 새롭게 등장한 메소드
+    </p>
+    <button id="request_bt">할일목록 요청</button>
+    <table id="result">
+    </table>
+    <script>
+      // 요청버튼 클릭하면, fake API에 Get 요청(=데이터 수신)을 통해서, #result에
+      // 결과를 출력
+      const reqBt = document.querySelector("#request_bt");
+      const resultDiv = document.querySelector("#result");
+      let tbody = 
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>완료여부</th>
+                    </tr>
+      ; // 200건의 tr을 포함할 변수
+        // 응답 데이터의 key : userId, id, title, completed
+      reqBt.addEventListener("click", function () {
+        fetch("https://jsonplaceholder.typicode.com/todos")
+          .then((response) => response.json())
+          .then((data) => {
+            for(d of data) { // 배열 반복문
+                tbody += <tr>
+                    <td>${d.id}</td>
+                    <td>${d.title}</td>
+                    <td>${d.completed ? "완료": "미완료"}</td>;
+                </tr>
+            }
+          });
+
+        resultDiv.innerHTML = tbody;
+        console.log(tbody);
+      });
+    </script>
+  </body>
+</html>
