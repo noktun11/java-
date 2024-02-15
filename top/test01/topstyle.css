@@ -1,0 +1,386 @@
+@charset "UTF-8";
+@font-face { font-family: 'font'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') 
+    format('woff'); font-weight: normal; font-style: normal; }
+:root {
+	--base-font-color: #000;
+	--main-font-color: #f9c02d;
+	--main-link-color: #666;
+	--base-font-size: 16px;
+	--point-font-size: 20px;	
+}
+html {
+	font-size: 20px; /* 문서 전체 root 폰트 크기 */
+    /*text-align: center;*/
+}
+/* pc 버전의 스타일
+	
+	1. 스타일 초기화 : 직접[v] RESET 사용할것인지? 
+	
+	2. 레이아웃 관련 공통 스타일, 각 구역별 세부 스타일 (코딩 컨벤션)
+	
+	    - 헤더 ~ 푸터
+	
+	3. 레이아웃 기법 : 여러가지~ 어떤것을 어떻게 사용할지!
+	
+	    - 대부분 : flexbox
+	    - 부분 : float, position
+	    - display 변경해가면서 구현
+ */
+
+*,
+*::before, /* 초기값 설정 */
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box
+}
+
+body {
+	font-family: 'Maven Pro', 'Noto Sans KR', sans-serif;
+}
+
+a, a:link {
+	color: inherit; /* 색상: 물려받아서 결정 */
+	text-decoration: none
+}
+
+/* =================== 라이트박스 =================== */
+
+.row ul {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: repeat(2, 160px);
+    grid-template-columns: repeat(3, 200px);
+}
+#lightbox {
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,.3);
+    width: 100vw;
+    height: 100vh
+}
+#closer {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    right: 5%;
+    top: 5%;
+    border: 0;
+    background-color: rgba(255,255,255,.7);
+}
+#next {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background-color: white;
+}
+#prev {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background-color: white;
+}
+.box_wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* overflow: hidden; */
+    border: 5px solid white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.7);
+}
+.box_wrap img {
+    width: 100%;
+    object-fit: cover;
+}
+/* =================== 팝업버튼 =================== */
+#popup {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #333;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: slateblue;
+}
+#close {
+    position: absolute;
+    right: 10%;
+    bottom: 5%
+}
+
+
+/* =================== 팝업창과 모달 =================== */
+#modal {
+    background-color: rgba(0, 0, 0, .5);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0; 
+    left: 0
+}
+.coupon {
+    width: 277px;
+    height: 366px;
+    position: relative
+}
+[type=image] {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* =================== 01. 레이아웃 공통 클래스 정의 =================== */
+
+.d-none {
+	display: none
+}
+.d-flex {
+	display: flex
+}
+
+.justify-center {
+	justify-content: center
+}
+.justify-between {
+	justify-content: space-between
+}
+.justify-around {
+	justify-content: space-around
+}
+
+.align-center {
+	align-items: center
+}
+.align-self-center {
+	align-self: center;
+}
+.text-center {
+    text-align: center
+}
+.container {
+	max-width: 1000px; /* 요즘은 네이버 기준, 1200쯤? 만드는게 일반적! */
+}
+
+.mx-auto {
+	margin: 0 auto;
+}
+.m-1 {
+    margin: 1rem
+}
+.mt-1 {
+	margin-top: 1rem;
+}
+.mt-2 {
+	margin-top: 2rem;
+}
+.mt-3 {
+	margin-top: 3rem;
+}
+.ml-1 {
+    margin-left: 1rem
+}
+.ml-2 {
+    margin-left: 2rem
+}
+.ml-3 {
+    margin-left: 3rem
+}
+.mr-1 {
+    margin-left: 1rem
+}
+.mr-2 {
+    margin-left: 2rem
+}
+.mr-3 {
+    margin-left: 3rem
+}
+
+.gap-1 {
+	gap: 1rem;
+}
+.gap-2 {
+	gap: 2rem;
+}
+.gap-3 {
+	gap: 3rem;
+}
+
+.border-top-thin {
+	border-top : 1px solid #000 
+}
+.border-left-thin {
+	border-top : 1px solid #000
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	background-color: var(--main-font-color); /* hr은 폰트가 아닌데..? */
+	position: relative;
+	top: -5px
+}
+
+.pos-absolute {
+	position: absolute
+}
+
+/* =================== 02. 레이아웃 구역별 세부 클래스 정의 =================== */
+
+/* =================== 02-1. header 클래스 정의 =================== */
+.links {
+	font-size: 14px;
+	color: var(--main-link-color);
+}
+
+/* =================== 02-2. main_nav 클래스 정의 =================== */
+.main_nav a {
+	font-size: .9rem;
+	font-weight: 700; /* 단위값이 없는 속성 중 하나 */
+	color: var(--main-font-color); /* 노랑색 */
+}
+.main_nav a:hover {
+	color: var(--base-font-color); /* 검정색 */
+}
+.topNav {
+	height: 60px;
+}
+
+/* =================== 03. trailer 아이디 정의 =================== */
+
+.devils {
+	z-index: 10;
+	/* left,right,top,bottom으로 위치 지정 vs static은 위치 지정 불가 */
+	left: 50%;
+	top: 40%;
+	transform: translateX(-50%);  /* 변형: X축 이동(얼마) */
+}
+/* LoVe, HAte (상태선택)순서 */
+.devils:hover {
+	display: none
+}
+.youtubeWrap{
+    position: relative;
+    height: 240px;
+    padding-top: 0px;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+.youtubeWrap iframe,.youtubeWrap object,.youtubeWrap embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+} 
+
+/* ====================== 로그인 ==================== */
+h1 {
+    font-family: 'font', sans-serif;
+    font-size: 35px;
+}
+input {
+    width: 80%;
+    height: 30px;
+    border: 2px solid rgb(244, 8, 8);
+    padding-left: 10px;
+    background-color:lightgreen;
+}
+#user_id {
+    font-size: 20px;
+}
+#user_pw {
+    font-size: 20px;
+}
+#submit {
+    width: 200px;
+    height: 75px;
+    background-color: rgb(18, 11, 235);
+    color: rgb(229, 15, 15);
+    font-size: 30px;
+    font-family: 'font', sans-serif;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+#submit:hover {
+    background-color:rgb(243, 32, 12);
+}
+
+
+
+/* ====================== 새로운 CSS ==================== */
+header {
+    background-image: url("../images/header-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+header h2 {
+    color: white;
+    border: 1px solid white;
+    padding: .5rem .750rem;
+    width: 61.11111111111111vw;    
+}
+.h-170 {
+    min-height: 170px;
+}
+
+
+#user_memo {
+    border-color: #67AFB4;
+    outline: 0; /* 포커스된 요소를 강조하는 아웃라인 : 없음 */
+    height: 30px;
+    flex: 4;
+    font-size: 1.250rem;
+    text-indent: 1rem
+}
+[type=submit] { /* 속성 선택자 */
+    width: 45px;
+    height: 30px;
+    border-radius: 30px;
+    color: white;
+    background-color: #67AFB4;
+    border: 0;
+    flex: 1
+}
+
+
+#memo_list {
+    margin: 2rem;
+    list-style: disc inside; /* circle, square */    
+    border-top: 1px dotted #A1A1A1;
+    max-height: 500px;
+    overflow-y: scroll /* 높이를 넘치면 스크롤 생성 */
+}
+#memo_list li {
+    margin: 1rem 0
+}
+
+footer {
+    background-color: #534133;
+    color: white;
+    width: 100vw;
+    padding: .5rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} 
