@@ -9,6 +9,100 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+/*케러셀 시작*/
+* {
+    box-sizing: border-box;
+  }
+  
+  .carousel-wrapper {
+    width: 500px;
+    height: 300px;
+  }
+ 
+  * {
+    box-sizing: border-box;
+  }
+  
+  .carousel-wrapper {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+  }
+ 
+  * {
+    box-sizing: border-box;
+  }
+  
+  .carousel-wrapper {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .carousel-wrapper > .carousel {
+    display: flex;
+  }
+
+* {
+  box-sizing: border-box;
+}
+
+.carousel-wrapper {
+  width: 500px;
+  height: 300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.carousel-wrapper {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.carousel-wrapper {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.carousel-wrapper > .carousel {
+  display: flex;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.carousel-wrapper {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.carousel-wrapper > .carousel {
+  display: flex;
+}
+
+.carousel-wrapper > .carousel > img {
+  width: 500px;
+  height: 300px;
+}
+/*=====================케러셀 끝=================*/
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: lightblue;
+}
+
 /*기존의 checkbox를 없애고 label를 이용하여  디자인 시안과 동일하게 변경*/
 .login-wrapper{
     width: 400px;
