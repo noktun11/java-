@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .container {
+            width: 1000px;
+            height: 562px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+        #form {
+          display: inline-block;
+          text-align: center;
+        }
+        .carousel-wrapper {
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .carousel-wrapper>.carousel {
+            display: flex;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+        }
+
+        #next {
+            right: 5%
+        }
+
+        #prev {
+            left: 5%
+        }
+
+        .imgs {
+            width: 100vw;
+            float: left;
+        }
+
+        .imgs img {
+            width: 100%;
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'font';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        h1 {
+            font-family: 'font', sans-serif;
+            font-size: 25px;
+        }
+        p {
+            display: flex;
+        }
+
+        html {
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            height: 50px;
+            border: 2px solid black;
+            padding-left: 10px;
+        }
+
+        #id_ {
+            font-size: 20px;
+        }
+
+        #pass_ {
+            font-size: 20px;
+        }
+
+        #submit {
+            width: 200px;
+            height: 75px;
+            background-color: green;
+            color: white;
+            font-size: 30px;
+            font-family: 'font', sans-serif;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        #submit:hover {
+            background-color: lightgreen;
+        }
+        #login-form label {
+            float: left;
+            width: 120;
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+        li {
+            list-style-type: none; 
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel" style="overflow: hidden">
+        <div class="container">
+            <button id="prev">이전</button>
+            <div class="imgs">
+                <img src="imgaes/test1.jpg" alt="img1" />
+            </div>
+            <div class="imgs">
+                <img src="imgaes/test2.jpg" alt="img2" />
+            </div>
+            <div class="imgs">
+                <img src="imgaes/test3.jpg" alt="img3" />
+            </div>
+            <button id="next">다음</button>
+        </div>
+    </div>
+    <div id="form" class="login-wrapper">
+        <form id="login-form">
+            <input type="text" name="userName" id="na" placeholder="이름을 입력해 주세요">
+            <input type="text" name="userId" id="id" placeholder="ID를 입력해 주세요">
+            <input type="password" name="userPassword" id="pw" placeholder="비밀번호를 입력해 주세요">
+            <input type="password" name="userRePassword" id="r_pw" placeholder="비밀번호를 다시 한번 입력해 주세요">
+            <input type="e-mail" name="userEmail" id="email" placeholder="이메일을 입력해 주세요">
+
+            <input type="submit" value="Login">
+            <input type="submit" value="Join">
+
+
+        </form>
+    />
+    <style>
+.login-btn {
+    text-align: center
+    display= inline-block;
+}
+
+.login-wrapper {
+    width: 400px;
+    height: 350px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.login-wrapper>h2 {
+    font-size: 24px;
+    color: #6A24FE;
+    margin-bottom: 20px;
+}
+
+#login-form>input {
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+
+#login-form>input::placeholder {
+    color: #D2D2D2;
+}
+
+#login-form>input[type="submit"] {
+    color: #fff;
+    font-size: 16px;
+    background-color: #6A24FE;
+    margin-top: 20px;
+}
+
+#login-form>input[type="checkbox"] {
+    display: none;
+}
+
+#login-form>label {
+    color: #999999;
+}
+
+#login-form input[type="checkbox"]+label {
+    cursor: pointer;
+    padding-left: 26px;
+    background-image: url("checkbox.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#login-form input[type="checkbox"]:checked+label {
+    background-image: url("checkbox-active.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+    </style>
+
+</body>
+
+<script>
+    var imgWidth = 1000;
+    var imgCount = $("#imgs img").length; // 갯수
+    var currentIndex = 0;
+    $(function () {
+        carouse()
+    });
+    function carousel() {
+        carouselNext();
+        carouselPrev();
+    }
+    function carouselPrev() {
+        $("#prev").on("click", prevImg)
+    }
+    function carouselNext() {
+        $("#next").on("click", nextImg)
+    }
+    function prevImg() {
+        var prevIndex = currentIndex - 1; // 다음 = 현재 + 1 vs 이전 = 현재 - 1
+        if (prevIndex < 0) prevIndex = 3;
+        currentIndex = prevIndex;
+        var movePoint = -1 * imgWidth * prevIndex;
+        $("#imgs").stop().animate({
+            marginLeft: movePoint
+        }, 400);
+    }
+    function nextImg() {
+        var nextIndex = currentIndex + 1; // 다음 = 현재 + 1 vs 이전 = 현재 - 1 
+        if (nextIndex >= imgCount) nextIndex = 0;
+        currentIndex = nextIndex;
+        var movePoint = -1 * imgWidth * nextIndex;
+        $("#imgs").stop().animate({
+            marginLeft: movePoint
+        }, 400);
+    }
+
+</script>
+
+</html>

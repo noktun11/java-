@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="button.css">
+</head>
+
+<body>
+    <!--1. <div>로 정렬 할 버튼을 감싼다.
+
+        2. <div>에 text-align: center로 중앙정렬 한다.
+        
+        3. 버튼에 inline-block 속성을 준다. -->
+    <div class="find-btn">
+        <button type="button" class="btn btn-navy navbar-btn find-btn1" onclick="location.href='/login'">로그인</button>
+        <button type="button" class="btn btn-grey navbar-btn find-btn1" onclick="location.href='/findIdPw'">비밀번호
+            재설정</button>
+    </div>
+    <div class="item-wrap">
+        <div class="items">
+            <div class="item left">
+                <div class="inner">
+                    <span>50%</span>
+                </div>
+            </div>
+            <div class="item right">
+                <div class="inner">
+                    <span>50%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--디스플레이 속성 이용한 숨김 버튼-->
+    <div>
+        <button onclick="makeChange();">Show</button>
+        <button id="b1">Button1</button>
+        <button id="b2">Button2</button>
+        <button id="b3">Button3</button>
+    </div>
+    <style>
+        #b1,
+        #b2,
+        #b3 {
+            display: none;
+        }
+    </style>
+    <script>
+        function makeChange() {
+            document.getElementById('b1').style.display = 'block';
+            document.getElementById('b2').style.display = 'block';
+            document.getElementById('b3').style.display = 'block';
+        }
+    </script>
+
+
+
+    <!--
+[링크, 홈(Home)으로 가기]
+<button onclick="window.location.href='https://ojji.wayful.com'">HOME</button>
+
+<button onclick="window.location.href='https://www.facebook.com/'">Facebook</button>
+
+<a href="https://www.facebook.com/">
+<input type="button" value="Facebook">
+</a>
+
+<form method="get" action="https://www.youtube.com/">
+<button type="submit">Continue</button>
+</form>
+
+[이전 페이지로 가기 : 브라우저의 이전 페이지로 가기 기능 Go back]
+<button onclick="goBack()">앞쪽 페이지로</button>
+<script>
+function goBack() {
+    window.history.back();
+}
+
+[뒤쪽 페이지로 가기 : 브라우저의 뒤쪽 페이지로 가기 Go forward]
+<button onclick="goForward()">뒤쪽 페이지로</button>
+<script>
+function goForward() {
+    window.history.forward();
+}
+
+[현재 페이지에서 맨 위로 가기]
+<button onclick="window.location.href='#top'">위로가기</button>
+
+[특정한 페이지로 가기]
+<button onclick="window.location.href='https://ojji.wayful.com/2017/03/CIA-documents-hacking-of-smart-phones-routers-computers-televisions.html'">CIA 무차별 해킹</button>
+
+[안내 말 띄우기]
+<button type="button" onclick="alert('이 버튼은 도움말 띄우기 예제 입니다')">도움말</button>
+
+[폼 만들기]
+<form action="/action_page.php" method="get">
+  이름: <input type="text" name="ireum"><br>
+  주소: <input type="text" name="juso"><br>
+  <button type="submit">보내기</button>
+  <button type="submit" formtarget="_blank">새 창에서 열기</button>
+</form>
+
+[버튼을 페이지 폭 전체 크기로 만들기]
+<button type="button" style="display:block; width:100%; text-align:center; font-size:1em; padding:2px;" onclick="history.go(0)">새로고침 >></button>
+
+[버턴 태그에 직접 속성을 준 예 3 : 버튼을 가로 가운데 두기]
+<center>
+<button
+type="button"
+style="color: #fff; background:blue; font-size:2em; border-radius:0.5em; padding:5px 20px;"
+onclick="alert('이 버튼은 도움말 띄우기 예제 입니다')">도움말</button>
+</center>
+
+[버턴 태그에 직접 속성을 준 예 3 : 버튼을 가로 오른쪽에 두기]
+<span style="float:right;">
+<button
+type="button"
+style="color: #fff; background:blue; font-size:2em; border-radius:0.5em; padding:5px 20px;"
+onclick="alert('이 버튼은 도움말 띄우기 예제 입니다')">도움말</button>
+</span>
+
+버튼을 위치시킬 때, 줄바꿈이 일어나지 않게 하려면, 위와 같이 줄바꿈이 일어나지 않는 <span>태그를 사용하면 되고, 줄을 바꾸어 영역을 설정하고, 그 영역 안에 버튼을 위치 시키려면, <div> 태그를 사용하면 됩니다. 
+
+[버튼 태그를 <div> 영역에 넣고, 위치를 지정한 태그 기본 모양]
+<div align="center">
+<button> ... </button>
+</div>
+
+ㅇ 버튼을 <div> 영역의 오른쪽에 위치시키려면, <div align="right">
+ㅇ 버튼을 감싸고 있는 <div> 영역에 여백, 색상 등의 속성을 주려면, 아래와 같이 스타일(style)을 지정해 주면 됩니다.
+<div align="center" style="border:1px solid red">
+    
+        -->
+
+</body>
+
+</html>

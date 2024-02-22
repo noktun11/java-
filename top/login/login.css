@@ -25,8 +25,7 @@ body {
     display: flex
 }
 
-#prev,
-#next {
+#prev, #next {
     position: absolute;
     top: 50%;
 }
@@ -104,7 +103,7 @@ input {
 }
 .login-btn {
     text-align: center
-    display: inline-block;
+    display= inline-block;
 }
 
 .login-wrapper {

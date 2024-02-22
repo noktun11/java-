@@ -10,29 +10,7 @@ body{
 }
 
 /*케러셀 시작*/
-* {
-    box-sizing: border-box;
-  }
-  
-  .carousel-wrapper {
-    width: 500px;
-    height: 300px;
-  }
- 
-  * {
-    box-sizing: border-box;
-  }
-  
-  .carousel-wrapper {
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
-  }
- 
-  * {
-    box-sizing: border-box;
-  }
-  
+
   .carousel-wrapper {
     width: 500px;
     height: 300px;
@@ -45,49 +23,6 @@ body{
 
 * {
   box-sizing: border-box;
-}
-
-.carousel-wrapper {
-  width: 500px;
-  height: 300px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.carousel-wrapper {
-  width: 500px;
-  height: 300px;
-  overflow: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.carousel-wrapper {
-  width: 500px;
-  height: 300px;
-  overflow: hidden;
-}
-
-.carousel-wrapper > .carousel {
-  display: flex;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.carousel-wrapper {
-  width: 500px;
-  height: 300px;
-  overflow: hidden;
-}
-
-.carousel-wrapper > .carousel {
-  display: flex;
 }
 
 .carousel-wrapper > .carousel > img {

@@ -1,0 +1,38 @@
+/*여섯번째는 grid를 사용한 영역 배치다.
+이 역시도, IE에서는 제대로 지원해주지 않기 때문에, 
+모바일이나 크롬만 맞출 때 사용하는 것이 좋을 듯 하다!*/
+
+.item-wrap {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+.item-wrap .items { /* 자식들을 감싸고 있는 부모 */
+	display: grid; /* 이 요소를 주면 바로 밑 자식 요소는 그리드의 아이템이 됨 */
+	height: 200px;
+	grid-template-columns: repeat(2, 1fr); /* 2개의 그리드 아이템을 그리드 컨테이너에 사용가능한 공간에 대한 비율을 차지하는 속성, fr은 분수(fraction)를 나타냄 */
+	grid-gap: 10px; /* grid-row-gap과 grid-column-gap의 축약형으로 행과 열사이의 간격을 10px 주는 속성 */
+}
+.item-wrap .items .item .inner { /* 나란히 배치할 영역 안 텍스트를 감싼 div */
+	position: relative;
+	background: aliceblue;
+	height: 100%;
+}
+.item-wrap .items .item .inner:before { /* 텍스트를 수직 가운데 정렬하기 위한 가상선택자 */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+}
+.item-wrap .items .item .inner span { /* 가상선택자와 나란히 배치하기 위해 준 속성 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	word-break: break-all;
+}

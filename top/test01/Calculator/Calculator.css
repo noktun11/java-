@@ -1,0 +1,48 @@
+#calculator {
+    width: 300px;
+    background-color: rgb(122, 122, 122);
+    color: red;
+}
+
+h2 {
+    font-family: 'font', sans-serif;
+    font-size: 25px;
+    color: red;
+}
+
+#result {
+    background-color: rgb(83, 83, 83);
+    font-size: 1.8rem;
+    padding: 15px 30px;
+}
+
+#number {
+    width: 225px;
+    float: left;
+}
+
+#calculator button {
+    background-color: #808080;
+    border: 1px solid rgb(249, 1, 1);
+    color: red;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 22px;
+}
+
+#operator button {
+    background-color: rgb(255, 148, 9);
+    width: 75px;
+}
+
+#last-row button {
+    background-color: rgb(255, 148, 9);
+    width: 75px;
+}
+
+.num-btn {
+    background-color: #808080 !important;
+    width: 75px;
+}

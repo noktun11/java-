@@ -1,0 +1,55 @@
+/*세번째는 float을 사용한 영역 배치다.
+float을 사용하면 꼭 clear를 해주어 다음에 올 태그들이 
+꼭 제자리를 잡을 수 있도록 해줘야 한다!*/
+
+.item-wrap {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+.item-wrap .items { /* 자식들을 감싸고 있는 부모 */
+	display: block;
+	margin: 0 -5px;
+}
+.item-wrap .items:before,
+.item-wrap .items:after {
+	content: '';
+	display: block;
+	clear: both; /* clear를 해주어야지만 float 다음에 올 태그의 영역이 올바르게 차지함 */
+}
+.item-wrap .items .item { /* 나란히 배치할 영역 */
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+	text-align: center;
+}
+.item-wrap .items .item.left {
+	padding-right: 5px;
+}
+.item-wrap .items .item.right {
+	padding-left: 5px;
+}
+.item-wrap .items .item .inner { /* 나란히 배치할 영역 안 텍스트를 감싼 div */
+	overflow: hidden;
+	position: relative;
+	height: 200px;
+	background: aliceblue;
+}
+.item-wrap .items .item .inner:before { /* 텍스트를 수직 가운데 정렬하기 위한 가상선택자 */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+}
+.item-wrap .items .item .inner span { /* 가상선택자와 나란히 배치하기 위해 준 속성 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	word-break: break-all;
+}

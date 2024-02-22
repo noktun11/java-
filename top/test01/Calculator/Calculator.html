@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calculator with Vanilla JS</title>
+    <link rel="stylesheet" href="Calculator.css">  
+  </head>
+  <body onkeydown="enter(event)">
+    <div id="container">
+      <h2>Calculator with Vanilla JS</h2>
+      <div id="calculator">
+        <div id="result"></div>
+        <div id="number"></div>
+        <div id="operator"></div>
+        <div id="last-row"></div>
+      </div>
+    </div>
+    <script>
+      /*
+      요구사항
+      1. 버튼 타입 : 숫자, 연산자
+      2. 버튼 입력 방식 : 클릭, 키보드 입력
+      3. 연산자 : 사칙연산, =, 초기화 
+      4. 유효성 검사 : 최초 입력, = 연산 후 => 최초입력 (현재값 삭제)
+                    연산자는 숫자 사이에만, 연속 한개만 쓸수 있다.   
+      */
+     
+      let result = document.getElementById("result"); // result라는 이름의 요소(HTML)을 찾기
+      result.innerHTML = "0";
+      // 최초입력 유효성검사
+      var isFirst = true;
+
+      // number btn
+      let calDiv = document.getElementById("number"); // number라는 이름의 요소(HTML)을 찾기
+      let lastDiv = document.getElementById("last-row"); // last-row라는 이름의 요소(HTML)을 찾기
+      for (let i = 0; i < 10; i++) {
+        i === 0
+          ? btnMaker("number", i, lastDiv)
+          : btnMaker("number", i, calDiv);
+      }
+      let zero = document.getElementById("0");
+      zero.className = "num-btn";
+      // operator
+      let operatorArray = ["+", "-", "*", "/", "=", "C"];
+      let operatorDiv = document.getElementById("operator"); // operator라는 이름의 요소(HTML)을 찾기
+      operatorArray.forEach((el) => {
+        el === "/" || el === "=" || el === "C"
+          ? btnMaker("operator", el, lastDiv)
+          : btnMaker("operator", el, operatorDiv);
+      });
+
+      // btn maker
+      function btnMaker(type, val, parent) {
+        let btn = document.createElement("button");
+        btn.value = val;
+        btn.innerHTML = val;
+        btn.btnType = type;
+        btn.accessKey = val;
+        btn.id = val;
+        btn.onclick = function (e) {
+          handler(e.target);
+        };
+        parent.appendChild(btn);
+      }
+
+      // onClick func
+      function handler(target) {
+        switch (target.btnType) {
+          case "number":
+            numberCase(target.value);
+            break;
+          case "operator":
+            operatorCase(target.value);
+            break;
+        }
+      }
+
+      // keyboard func
+      function enter(e) {
+        if (e.keyCode === 27) {
+          operatorCase("C");
+        }
+        if (e.keyCode === 13 || e.keyCode === 187) {
+          operatorCase("=");
+        } else if (48 <= e.keyCode && e.keyCode <= 57) {
+          numberCase(e.key);
+        } else if (operatorArray.indexOf(e.key) !== -1) {
+          operatorCase(e.key);
+        }
+      }
+
+      // handler funcs
+      function numberCase(val) {
+        if (isFirst) {
+          result.innerHTML = val;
+          isFirst = false;
+        } else {
+          result.innerHTML += val;
+        }
+      }
+      function operatorCase(val) {
+        if (val === "C") {
+          result.innerHTML = "0";
+          isFirst = true;
+        } else if (val === "=") {
+          if (
+            operatorArray.indexOf(
+              result.innerHTML[result.innerHTML.length - 1],
+            ) !== -1
+          ) {
+            confirm("can not calculate with one element");
+          } else {
+            console.log(result.innerHTML);
+            result.innerHTML = eval(result.innerHTML);
+            isFirst = true;
+          }
+        } else {
+          if (isFirst === true) {
+            confirm("Press a number!");
+          } else {
+            if (
+              operatorArray.indexOf(
+                result.innerHTML[result.innerHTML.length - 1],
+              ) !== -1
+            ) {
+              confirm("can not press double operator");
+            } else {
+              result.innerHTML += val;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

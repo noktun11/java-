@@ -1,0 +1,75 @@
+table{
+    border: 2px solid; 
+    border-collapse: collapse; 
+    text-align: center;
+}
+
+th, td{ border: 1px solid; padding: 10px 5px;}
+
+th{background-color: teal; color: white;}
+
+/* 짝수줄만 배경색을 다르게 */
+tr:nth-child(2n+0){background-color: tomato;}
+
+td:nth-child(1){width: 40%}
+th{border-bottom: double red;}
+
+/* 직접 만들지 않았지만 그래서 보이지는 않지만 실제 */
+/* 테이블 안에 첫번째 자식은 tr이 아니라 tbody라는 녀석임 */
+table>:nth-child(1){border: 10px solid blue;}
+table tr{color: violet;}
+table>tr{color: yellowgreen;} /* 적용이 안됨. 테이블 바로 밑에는 tbody라서 */
+/*스크롤 달기
+    부모요소 <div>에 overflow-x: auto */
+
+    /*========================*/
+    /* display: table-cell을 사용한 영역 배치다.
+    <table> 태그 내 속성들을 고스란히 사용할 수 있기 때문에 유용한 속성이다. 
+    하지만 그에 따라 제약도 있는 편이라 사용할 때 주의가 필요하다.*/
+    
+    .item-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .item-wrap .items { /* 자식들을 감싸고 있는 부모 */
+        display: table;
+        table-layout: fixed; /* 고정된 영역 이상으로 넓어지지 않도록 테이블을 고정하는 속성 */
+        width: 100%;
+        height: 200px;
+        word-break: break-all; /* 테이블을 고정하게되면 table 태그의 기본으로 주어져있는 word-break: normal; 속성 때문에 한줄로 텍스트가 삐져나오기 때문에 꼭 줘야하는 속성 */
+    }
+    .item-wrap .items .item { /* 나란히 배치할 영역 */
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .item-wrap .items .item.left {
+        padding-right: 5px;
+    }
+    .item-wrap .items .item.right {
+        padding-left: 5px;
+    }
+    .item-wrap .items .item .inner { /* 나란히 배치할 영역 안 텍스트를 감싼 div */
+        overflow: hidden; /* 높이값보다 텍스트가 많아질 경우 숨김처리 하기 위한 속성 */
+        position: relative; /* 가상선택자의 부모영역이 될 수 있도록 준 속성 */
+        height: 100%; /* 높이값을 상속받기 위한 속성, 이 속성을 주지 않으면 height: auto가 되어 영역이 사라짐 */
+        background: aliceblue;
+    }
+    .item-wrap .items .item .inner:before { /* 텍스트를 수직 가운데 정렬하기 위한 가상선택자 */
+        content: '';
+        position: absolute; /* 다음에 올 텍스트의 고정된 기준 역할을 하게 하기 위하여 주는 속성*/
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+    }
+    .item-wrap .items .item .inner span { /* 가상선택자와 나란히 배치하기 위해 준 속성 */
+        position: absolute; /* 부모의 영역 안에서 자유롭게 움직일 수 있도록 주는 속성 */
+        top: 50%; /* 부모로부터 top 50%를 띄워주는 속성 */
+        left: 50%; /* 부모로부터 left 50%를 띄워주는 속성 */
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); /* -ms- 프리픽스 붙여주면 IE 9 부터 사용 가능, -ms- 프리픽스 제외하고는 굳이 사용하지 않아도 되지만 혹시모를 상황을 대비해 모두 적어주었음 */
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); /* 텍스트의 너비값이 고정되어 있지 않기 때문에 유동적으로 가운데에 배치하기 위한 속성 */
+    }    

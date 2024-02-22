@@ -1,0 +1,51 @@
+/*네번째는 position을 사용한 영역 배치다.*/
+
+.item-wrap {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+.item-wrap .items { /* 자식들을 감싸고 있는 부모 */
+	display: block;
+	position: relative; /* 자식들의 기준점이 되기 위해 준 속성*/
+	height: 200px;
+}
+.item-wrap .items .item { /* 나란히 배치할 영역 */
+	position: absolute;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+}
+.item-wrap .items .item.left {
+	padding-right: 5px;
+}
+.item-wrap .items .item.right {
+	padding-left: 5px;
+}
+.item-wrap .items .item+.item {
+	left: 50%; /* 다음에 올 영역에 left: 50%;을 사용해 나란히 배치 */
+}
+.item-wrap .items .item .inner { /* 나란히 배치할 영역 안 텍스트를 감싼 div */
+	position: relative;
+	background: aliceblue;
+	height: 100%;
+}
+.item-wrap .items .item .inner:before { /* 텍스트를 수직 가운데 정렬하기 위한 가상선택자 */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+}
+.item-wrap .items .item .inner span { /* 가상선택자와 나란히 배치하기 위해 준 속성 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	word-break: break-all;
+}
